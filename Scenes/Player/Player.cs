@@ -4,6 +4,12 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	private const float GRAVITY = 690.0f, RUN_SPEED = 120.0f, JUMP_SPEED = -270.0f, MAX_FALL = 300.0f;
+
+	public bool Still => Mathf.IsZeroApprox(Velocity.X);
+	public bool Falling => Velocity.Y > 0;
+	public bool OnFloor => IsOnFloor();
+	
+
 	private bool _jumped = false;
 	[Export] private AudioStreamPlayer2D _jumpSound;
 	[Export] private Sprite2D _sprite;
@@ -46,10 +52,7 @@ public partial class Player : CharacterBody2D
 			_jumpSound.Play();
 		}
 
-		if (!Mathf.IsZeroApprox(velocity.X))
-		{
-			_sprite.FlipH = velocity.X < 0;
-		}
+		_sprite.FlipH = !Mathf.IsZeroApprox(velocity.X) ? velocity.X < 0 : _sprite.FlipH;
 
 		return velocity;
 	}
