@@ -6,6 +6,7 @@ public partial class Player : CharacterBody2D
 	private const float GRAVITY = 690.0f, RUN_SPEED = 120.0f, JUMP_SPEED = -270.0f, MAX_FALL = 300.0f;
 	private bool _jumped = false;
 	[Export] private AudioStreamPlayer2D _jumpSound;
+	[Export] private Sprite2D _sprite;
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -43,6 +44,11 @@ public partial class Player : CharacterBody2D
 			_jumped = false;
 			velocity.Y = JUMP_SPEED;
 			_jumpSound.Play();
+		}
+
+		if (!Mathf.IsZeroApprox(velocity.X))
+		{
+			_sprite.FlipH = velocity.X < 0;
 		}
 
 		return velocity;

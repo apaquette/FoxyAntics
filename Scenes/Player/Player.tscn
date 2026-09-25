@@ -9,14 +9,129 @@
 radius = 8.0
 height = 24.0
 
-[node name="Player" type="CharacterBody2D" unique_id=488279494 node_paths=PackedStringArray("_jumpSound")]
+[sub_resource type="Animation" id="Animation_ude3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_t26db"]
+resource_name = "fall"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_825xp"]
+resource_name = "hurt"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_jmcll"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_fk5o5"]
+resource_name = "jump"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_4wape"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wape"]
+_data = {
+&"RESET": SubResource("Animation_ude3g"),
+&"fall": SubResource("Animation_t26db"),
+&"hurt": SubResource("Animation_825xp"),
+&"idle": SubResource("Animation_jmcll"),
+&"jump": SubResource("Animation_fk5o5"),
+&"run": SubResource("Animation_4wape")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=488279494 node_paths=PackedStringArray("_jumpSound", "_sprite")]
 collision_layer = 0
 script = ExtResource("1_h54ih")
 _jumpSound = NodePath("JumpSound")
+_sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=117169027]
 texture = ExtResource("1_s0eop")
 hframes = 19
+frame = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=680361648]
 position = Vector2(0, 4)
@@ -26,3 +141,7 @@ shape = SubResource("CapsuleShape2D_ft8w5")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1093509838]
 stream = ExtResource("4_ude3g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=738433143]
+libraries/ = SubResource("AnimationLibrary_4wape")
+autoplay = &"idle"
