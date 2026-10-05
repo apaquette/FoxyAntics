@@ -30,8 +30,9 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 		velocity = GetGravity(velocity, delta);
-		Velocity = GetInput(velocity);
+		velocity = GetInput(velocity);
 		velocity.Y = Mathf.Clamp(velocity.Y, JUMP_SPEED, MAX_FALL);
+		Velocity = velocity;
 		MoveAndSlide();
 	}
 
