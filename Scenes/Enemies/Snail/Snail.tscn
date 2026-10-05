@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b6roef2kq5qc4"]
+
+[ext_resource type="PackedScene" uid="uid://bmoalljm1tvbg" path="res://Scenes/Enemies/EnemyBase/EnemyBase.tscn" id="1_h5qp1"]
+[ext_resource type="Script" uid="uid://0x335lict2sa" path="res://Scenes/Enemies/Snail/Snail.cs" id="2_tgnkg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgnkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgnkg"]
+size = Vector2(36, 24)
+
+[node name="Snail" unique_id=1529428760 node_paths=PackedStringArray("_floorDetect") instance=ExtResource("1_h5qp1")]
+script = ExtResource("2_tgnkg")
+_floorDetect = NodePath("FloorDetect")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1377125098]
+animation = &"snail"
+autoplay = "snail"
+frame = 0
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=406856866]
+position = Vector2(0, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tgnkg")
+
+[node name="HitBox" parent="." index="3" unique_id=475070182]
+position = Vector2(2, 0)
+Shape = SubResource("RectangleShape2D_tgnkg")
+
+[node name="FloorDetect" type="RayCast2D" parent="." index="4" unique_id=2041930999]
+position = Vector2(-19, 0)
+target_position = Vector2(0, 30)

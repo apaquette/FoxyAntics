@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmoalljm1tvbg"]
 
 [ext_resource type="Texture2D" uid="uid://ct8i06tdq0ymy" path="res://Assets/enemies/eagle/eagle-attack.png" id="1_ebcca"]
+[ext_resource type="Script" uid="uid://bqtdg517u47it" path="res://Scenes/Enemies/EnemyBase/EnemyBase.cs" id="1_oiin3"]
 [ext_resource type="Texture2D" uid="uid://b73bsh606lc35" path="res://Assets/enemies/frog/frog_sheet.png" id="2_byu4e"]
 [ext_resource type="Texture2D" uid="uid://dl2mb2q5w7byw" path="res://Assets/enemies/snail/snail.png" id="2_lajj5"]
 [ext_resource type="PackedScene" uid="uid://qewarrtg6lic" path="res://Scenes/HitBox/HitBox.tscn" id="4_byu4e"]
@@ -175,16 +176,20 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="EnemyBase" type="CharacterBody2D" unique_id=1529428760]
+[node name="EnemyBase" type="CharacterBody2D" unique_id=1529428760 node_paths=PackedStringArray("_screenNotifier", "_animatedSprite", "_hitBox")]
 collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=406856866]
+script = ExtResource("1_oiin3")
+_screenNotifier = NodePath("VisibleOnScreen2D")
+_animatedSprite = NodePath("AnimatedSprite2D")
+_hitBox = NodePath("HitBox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1377125098]
 sprite_frames = SubResource("SpriteFrames_pbqth")
 animation = &"frog_jump"
 frame = 1
 frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=406856866]
 
 [node name="VisibleOnScreen2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=591015940]
 
