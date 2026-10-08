@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://bny624eckwekk" path="res://Resources/LevelTiles.tres" id="2_bgw71"]
 [ext_resource type="PackedScene" uid="uid://c4hfer4hxk4j" path="res://Scenes/Player/Player.tscn" id="3_78m1b"]
 [ext_resource type="PackedScene" uid="uid://b6roef2kq5qc4" path="res://Scenes/Enemies/Snail/Snail.tscn" id="4_3lxj6"]
+[ext_resource type="PackedScene" uid="uid://bso4kw2xn5w6b" path="res://Scenes/Enemies/Frog/Frog.tscn" id="5_lmtt4"]
 
 [node name="LevelBase" type="Node" unique_id=1544330714]
 script = ExtResource("1_5ufo3")
@@ -19,3 +20,6 @@ position = Vector2(127, -65)
 
 [node name="Snail" parent="Enemies" unique_id=1529428760 instance=ExtResource("4_3lxj6")]
 position = Vector2(419, -29)
+
+[node name="Frog" parent="Enemies" unique_id=767909634 instance=ExtResource("5_lmtt4")]
+position = Vector2(417, -168)

@@ -14,6 +14,11 @@ public partial class Player : CharacterBody2D
 	[Export] private AudioStreamPlayer2D _jumpSound;
 	[Export] private Sprite2D _sprite;
 
+    public override void _EnterTree()
+    {
+        AddToGroup(GameConstants.GROUP_PLAYER);
+    }
+
     public override void _UnhandledInput(InputEvent @event)
     {
 		if (@event.IsActionPressed("jump"))

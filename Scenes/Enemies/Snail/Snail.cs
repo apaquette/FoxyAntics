@@ -15,10 +15,10 @@ public partial class Snail : EnemyBase
 		FlipMe();
 	}
 
-	private Vector2 ApplyGravity(Vector2 velocity,double delta)
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
-		velocity.Y += _gravity * (float)delta;
-		return velocity;
+		base._Ready();
 	}
 
 	private Vector2 DetermineDirection(Vector2 velocity,double delta)
@@ -30,7 +30,7 @@ public partial class Snail : EnemyBase
 		return velocity;
 	}
 
-	private void FlipMe()
+	protected override void FlipMe()
 	{
 		if(!_floorDetect.IsColliding() || IsOnWall())
 		{
