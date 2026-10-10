@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://txhdxvqj0hml"]
+
+[ext_resource type="PackedScene" uid="uid://bmoalljm1tvbg" path="res://Scenes/Enemies/EnemyBase/EnemyBase.tscn" id="1_euo1a"]
+[ext_resource type="Script" uid="uid://bip1544lxtht0" path="res://Scenes/Enemies/Eagle/Eagle.cs" id="2_8eptn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_euo1a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8eptn"]
+radius = 17.0
+
+[node name="Eagle" unique_id=1529428760 instance=ExtResource("1_euo1a")]
+collision_mask = 0
+script = ExtResource("2_8eptn")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1377125098]
+animation = &"eagle"
+frame = 0
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=406856866]
+shape = SubResource("CircleShape2D_euo1a")
+
+[node name="HitBox" parent="." index="3" unique_id=475070182]
+Shape = SubResource("CircleShape2D_8eptn")
+
+[node name="PlayerDetect" type="RayCast2D" parent="." index="5" unique_id=477209241]
+target_position = Vector2(0, 250)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false

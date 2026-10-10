@@ -27,7 +27,7 @@ public partial class EnemyBase : CharacterBody2D
 
     
 
-    private void OnScreenEntered()
+    protected virtual void OnScreenEntered()
     {
 		_behaviorTimer.Start();
 		_screenNotifier.ScreenEntered -= OnScreenEntered;

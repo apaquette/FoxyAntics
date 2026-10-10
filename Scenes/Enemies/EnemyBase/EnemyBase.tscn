@@ -196,6 +196,8 @@ frame_progress = 1.0
 [node name="VisibleOnScreen2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=591015940]
 
 [node name="HitBox" parent="." unique_id=475070182 instance=ExtResource("4_byu4e")]
+collision_layer = 2
+collision_mask = 16
 
 [node name="BehaviourTimer" type="Timer" parent="." unique_id=2111503985]
 wait_time = 3.0
