@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c0qtupdlovn7q"]
+
+[ext_resource type="Script" uid="uid://dy12vcfqtd108" path="res://Scenes/Shooter/Shooter.cs" id="1_081au"]
+[ext_resource type="AudioStream" uid="uid://dtmx6j0yuqdct" path="res://Assets/sound/laser.wav" id="3_wjemi"]
+
+[node name="Shooter" type="Node2D" unique_id=2141450256 node_paths=PackedStringArray("_sound", "_timer")]
+script = ExtResource("1_081au")
+_sound = NodePath("Sound")
+_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=1512221901]
+autostart = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=1790737760]
+stream = ExtResource("3_wjemi")
