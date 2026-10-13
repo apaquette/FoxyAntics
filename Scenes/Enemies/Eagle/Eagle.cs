@@ -4,6 +4,8 @@ using System;
 public partial class Eagle : EnemyBase
 {
 	private readonly Vector2 FLY_SPEED = new(35.0f, 15.0f);
+    [Export] private Shooter _shooter;
+    [Export] private RayCast2D _playerDetect;
 	private Vector2 _flyDirection = Vector2.Zero;
     protected override void OnScreenEntered()
     {
@@ -16,6 +18,7 @@ public partial class Eagle : EnemyBase
     {
         Velocity = _flyDirection;
 		MoveAndSlide();
+        Shoot();
     }
 
 	private void FlyToPlayer()
@@ -27,5 +30,13 @@ public partial class Eagle : EnemyBase
     protected override void OnBehaviorTimerTimeout()
     {
         FlyToPlayer();
+    }
+    private void Shoot()
+    {
+        if (_playerDetect.IsColliding())
+        {
+            var dir = GlobalPosition.DirectionTo(_player.GlobalPosition);
+            _shooter.Shoot(dir);
+        }
     }
 }

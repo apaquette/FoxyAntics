@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://nkn7ueh7e5dp" path="res://Scenes/PlayerCam/PlayerCam.tscn" id="2_ft8w5"]
 [ext_resource type="AudioStream" uid="uid://bn4inkecbwsh2" path="res://Assets/sound/jump.wav" id="4_ude3g"]
 [ext_resource type="PackedScene" uid="uid://qewarrtg6lic" path="res://Scenes/HitBox/HitBox.tscn" id="5_jmcll"]
+[ext_resource type="PackedScene" uid="uid://c0qtupdlovn7q" path="res://Scenes/Shooter/Shooter.tscn" id="6_t26db"]
+[ext_resource type="PackedScene" uid="uid://beb8ddedeyno4" path="res://Scenes/Bullets/PlayerBullet/PlayerBullet.tscn" id="7_fk5o5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ft8w5"]
 radius = 8.0
@@ -198,11 +200,12 @@ graph_offset = Vector2(55, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wape"]
 
-[node name="Player" type="CharacterBody2D" unique_id=488279494 node_paths=PackedStringArray("_jumpSound", "_sprite")]
+[node name="Player" type="CharacterBody2D" unique_id=488279494 node_paths=PackedStringArray("_jumpSound", "_sprite", "_shooter")]
 collision_layer = 0
 script = ExtResource("1_h54ih")
 _jumpSound = NodePath("JumpSound")
 _sprite = NodePath("Sprite2D")
+_shooter = NodePath("Shooter")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=117169027]
 texture = ExtResource("1_s0eop")
@@ -233,3 +236,7 @@ scale = Vector2(0.776343, 0.8118787)
 collision_layer = 4
 collision_mask = 10
 Shape = SubResource("CapsuleShape2D_4wape")
+
+[node name="Shooter" parent="." unique_id=2141450256 instance=ExtResource("6_t26db")]
+_bulletScene = ExtResource("7_fk5o5")
+_speed = 100.0

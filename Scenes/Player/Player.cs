@@ -13,6 +13,7 @@ public partial class Player : CharacterBody2D
 	private bool _jumped = false;
 	[Export] private AudioStreamPlayer2D _jumpSound;
 	[Export] private Sprite2D _sprite;
+	[Export] private Shooter _shooter;
 
     public override void _EnterTree()
     {
@@ -23,6 +24,8 @@ public partial class Player : CharacterBody2D
     {
 		if (@event.IsActionPressed("jump"))
 			_jumped = true;
+		if (@event.IsActionPressed("shoot"))
+			_shooter.Shoot(_sprite.FlipH ? Vector2.Left : Vector2.Right);
     }
 
 	// Called when the node enters the scene tree for the first time.
